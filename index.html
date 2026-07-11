@@ -223,16 +223,14 @@
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:5px 20px;
+    padding:0;
     overflow:hidden;
 }
-
 .school-banner img{
-    width:100%;
-    max-width:1400px;
-    height:auto;
-    max-height:180px;
-    object-fit:contain;
+    width:85%;              /* reduce left-right width */
+    height:220px;            /* increase banner height */
+    object-fit:cover;        /* fills banner */
+    object-position:center;  /* keeps center visible */
 }
 </style>
 </head>
