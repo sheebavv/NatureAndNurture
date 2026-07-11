@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nature & Nurture Preschool</title>
+<style>
+  :root{
+    --green-dark:#2f7d4f;
+    --green:#4caf6e;
+    --green-light:#e9f7ee;
+    --brown:#7a4a28;
+    --sun:#ffd166;
+    --sky:#bfe6ff;
+    --coral:#ff6f61;
+    --blue:#3aa0e0;
+    --purple:#9b6bcc;
+    --text:#3a3a3a;
+    --cream:#fffaf0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Trebuchet MS', 'Segoe UI', Verdana, sans-serif;
+    color:var(--text);
+    background:linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e') center/cover fixed;
+    line-height:1.6;
+  }
+  a{text-decoration:none;color:inherit;}
+  img,svg{display:block;max-width:100%;}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.95);backdrop-filter:blur(12px);
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-size:1.4rem;font-weight:bold;color:var(--green-dark);
+  }
+  .logo .leaf-icon{width:34px;height:34px;flex-shrink:0;}
+  nav ul{
+    display:flex;gap:26px;list-style:none;
+  }
+  nav a{
+    font-weight:600;color:var(--text);
+    transition:color .2s;
+    padding:6px 2px;
+    border-bottom:2px solid transparent;
+  }
+  nav a:hover{color:var(--green-dark);border-bottom-color:var(--green-dark);}
+  .nav-toggle{display:none;}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(180deg,#eaf7ff 0%, var(--green-light) 100%);
+    padding:50px 24px 30px;
+  }
+  .hero-wrap{
+    max-width:1100px;margin:0 auto;
+    display:flex;align-items:center;gap:40px;
+    flex-wrap:wrap;
+  }
+  .hero-text{flex:1 1 380px;}
+  .badge{
+    display:inline-block;
+    background:var(--coral);
+    color:#fff;font-weight:bold;font-size:0.9rem;
+    padding:8px 16px;border-radius:30px;
+    margin-bottom:16px;
+    box-shadow:0 4px 10px rgba(255,111,97,0.35);
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
+  }
+  .hero-text h1{
+    font-size:2.4rem;color:var(--green-dark);
+    margin-bottom:14px;line-height:1.25;
+  }
+  .hero-text p{
+    font-size:1.05rem;margin-bottom:22px;max-width:520px;
+  }
+  .btn{
+    display:inline-block;
+    background:var(--green-dark);
+    color:#fff;font-weight:bold;
+    padding:14px 28px;border-radius:30px;
+    box-shadow:0 6px 16px rgba(47,125,79,0.3);
+    transition:transform .15s, background .2s;
+  }
+  .btn:hover{background:var(--green);transform:translateY(-2px);}
+  .btn-outline{
+    display:inline-block;margin-left:12px;
+    padding:14px 28px;border-radius:30px;
+    border:2px solid var(--green-dark);
+    color:var(--green-dark);font-weight:bold;
+  }
+  .btn-outline:hover{background:var(--green-dark);color:#fff;}
+  .hero-img{flex:1 1 380px;min-width:300px;}
+
+  /* Sections */
+  section{padding:60px 24px;}
+  .section-wrap{max-width:1100px;margin:0 auto;}
+  h2.section-title{
+    text-align:center;font-size:2rem;color:var(--green-dark);
+    margin-bottom:8px;
+  }
+  .section-sub{
+    text-align:center;color:#666;max-width:600px;margin:0 auto 40px;
+  }
+
+  /* Did you know */
+  .facts{
+    background:var(--green-dark);
+    color:#fff;border-radius:24px;
+    padding:44px 30px;
+    margin:0 auto 20px;
+  }
+  .facts h2{color:#fff;font-size:1.7rem;margin-bottom:20px;text-align:center;}
+  .facts-grid{
+    display:flex;gap:24px;flex-wrap:wrap;justify-content:center;
+    margin-bottom:24px;
+  }
+  .fact-card{
+    background:rgba(255,255,255,0.12);
+    border-radius:16px;padding:22px;flex:1 1 220px;max-width:260px;
+    text-align:center;
+  }
+  .fact-card .big{
+    font-size:2.2rem;font-weight:bold;color:var(--sun);display:block;margin-bottom:6px;
+  }
+  .facts p.lead{
+    max-width:760px;margin:0 auto;text-align:center;font-size:1.05rem;opacity:0.95;
+  }
+
+  /* Philosophy */
+  .philosophy{
+    display:flex;gap:40px;align-items:center;flex-wrap:wrap;
+  }
+  .philosophy .text{flex:1 1 400px;}
+  .philosophy .cards{
+    flex:1 1 320px;display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  }
+  .mini-card{
+    background:#fff;border-radius:16px;padding:20px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.06);
+    border-top:4px solid var(--green);
+    text-align:center;
+  }
+  .mini-card:nth-child(2){border-top-color:var(--coral);}
+  .mini-card:nth-child(3){border-top-color:var(--blue);}
+  .mini-card:nth-child(4){border-top-color:var(--purple);}
+  .mini-card .emoji{font-size:1.8rem;margin-bottom:8px;}
+  .mini-card h4{margin-bottom:6px;color:var(--green-dark);}
+  .mini-card p{font-size:0.9rem;color:#666;}
+
+  /* Admission CTA */
+  .admission{
+    background:linear-gradient(135deg, var(--coral), #ff9a76);
+    color:#fff;border-radius:24px;
+    text-align:center;padding:50px 24px;
+    max-width:1100px;margin:0 auto;
+  }
+  .admission h2{color:#fff;margin-bottom:10px;font-size:1.9rem;}
+  .admission p{max-width:600px;margin:0 auto 24px;opacity:0.95;}
+  .admission .btn{background:#fff;color:var(--coral);}
+  .admission .btn:hover{background:#fff5f0;}
+
+  /* Contact */
+  .contact-wrap{
+    display:flex;gap:40px;flex-wrap:wrap;
+  }
+  .contact-info{flex:1 1 320px;}
+  .contact-info .item{
+    display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;
+  }
+  .contact-info .icon{
+    width:42px;height:42px;border-radius:50%;
+    background:var(--green-light);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;font-size:1.3rem;
+  }
+  .contact-info h4{color:var(--green-dark);margin-bottom:4px;}
+  .map-box{
+    flex:1 1 320px;
+    border-radius:16px;
+    background:var(--green-light);
+    display:flex;align-items:center;justify-content:center;
+    min-height:220px;padding:30px;text-align:center;
+    color:var(--green-dark);font-weight:600;
+    border:2px dashed var(--green);
+  }
+
+  footer{
+    background:#26492f;color:#dfeee3;
+    padding:30px 24px;text-align:center;font-size:0.9rem;
+  }
+  footer strong{color:#fff;}
+
+  @media (max-width:720px){
+    nav ul{gap:14px;font-size:0.9rem;}
+    .hero-text h1{font-size:1.9rem;}
+    .facts-grid{flex-direction:column;align-items:center;}
+  }
+
+.fact-card,.mini-card{transition:.35s;border:1px solid rgba(0,0,0,.06)}
+.fact-card:hover,.mini-card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,.15)}
+.hero-text{background:rgba(255,255,255,.85);padding:40px;border-radius:24px;box-shadow:0 12px 30px rgba(0,0,0,.15)}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo">
+      <svg class="leaf-icon" viewBox="0 0 64 64"><path d="M32 4 C50 10 58 28 46 46 C34 60 12 56 8 40 C4 24 16 6 32 4Z" fill="#4caf6e"/><path d="M32 8 C36 22 34 40 20 50" stroke="#2f7d4f" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+      Nature & Nurture Preschool
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-wrap">
+    <div class="hero-text">
+      <span class="badge">🎉 Free Admission for the First 10 Students!</span>
+      <h1>Where Little Minds Grow, Play & Blossom</h1>
+      <p>At Nature &amp; Nurture Preschool, every day is thoughtfully designed for young minds. We don't just teach children what to think — we teach them how to think.</p>
+      <a href="#admissions" class="btn">Enroll Now</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+    <div class="hero-img">
+      <!-- Cartoon tree illustration with children sitting on branches -->
+      <svg viewBox="0 0 800 620" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#cdeeff"/>
+            <stop offset="100%" stop-color="#f3fdf6"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="800" height="620" fill="url(#skyGrad)" rx="20"/>
+        <!-- sun -->
+        <circle cx="670" cy="90" r="55" fill="#ffd166"/>
+        <g stroke="#ffd166" stroke-width="6" stroke-linecap="round">
+          <line x1="670" y1="10" x2="670" y2="0"/>
+          <line x1="740" y1="90" x2="752" y2="90"/>
+          <line x1="720" y1="40" x2="730" y2="30"/>
+          <line x1="720" y1="140" x2="730" y2="150"/>
+        </g>
+        <!-- clouds -->
+        <g fill="#ffffff" opacity="0.9">
+          <ellipse cx="120" cy="80" rx="45" ry="20"/>
+          <ellipse cx="155" cy="70" rx="35" ry="18"/>
+          <ellipse cx="90" cy="70" rx="30" ry="16"/>
+        </g>
+        <!-- grass -->
+        <path d="M0 560 C150 520 250 600 400 560 C550 520 650 600 800 560 L800 620 L0 620 Z" fill="#8fd39a"/>
+        <path d="M0 580 C150 545 250 610 400 580 C550 545 650 610 800 580 L800 620 L0 620 Z" fill="#79c589"/>
+
+        <!-- trunk -->
+        <path d="M370 560 C365 460 360 380 380 320 C400 260 400 260 400 260 C400 260 400 260 420 320 C440 380 435 460 430 560 Z" fill="#8a5a34"/>
+        <path d="M390 560 C388 470 388 400 400 330" stroke="#6e4526" stroke-width="4" fill="none" opacity="0.5"/>
+        <path d="M410 560 C412 470 412 400 400 330" stroke="#6e4526" stroke-width="4" fill="none" opacity="0.5"/>
+
+        <!-- branches -->
+        <g stroke="#8a5a34" stroke-linecap="round" fill="none">
+          <path d="M400 300 C330 260 250 250 190 200" stroke-width="16"/>
+          <path d="M400 290 C470 240 540 235 610 190" stroke-width="16"/>
+          <path d="M400 340 C320 330 260 360 190 340" stroke-width="14"/>
+          <path d="M400 330 C480 320 540 350 620 340" stroke-width="14"/>
+          <path d="M400 260 C400 210 400 180 400 140" stroke-width="14"/>
+        </g>
+
+        <!-- foliage clusters (cartoon fluffy blobs) -->
+        <g>
+          <circle cx="400" cy="150" r="95" fill="#5cb96e"/>
+          <circle cx="270" cy="190" r="85" fill="#4caf6e"/>
+          <circle cx="530" cy="190" r="85" fill="#4caf6e"/>
+          <circle cx="180" cy="240" r="70" fill="#3f9d5e"/>
+          <circle cx="620" cy="240" r="70" fill="#3f9d5e"/>
+          <circle cx="320" cy="120" r="70" fill="#6bc47e"/>
+          <circle cx="480" cy="120" r="70" fill="#6bc47e"/>
+          <circle cx="400" cy="260" r="90" fill="#4caf6e"/>
+          <circle cx="250" cy="290" r="60" fill="#3f9d5e"/>
+          <circle cx="550" cy="290" r="60" fill="#3f9d5e"/>
+        </g>
+
+        <!-- scattered leaf accents -->
+        <g fill="#ffd166">
+          <path d="M150 300 q10 -18 22 0 q-10 18 -22 0Z"/>
+          <path d="M650 300 q10 -18 22 0 q-10 18 -22 0Z"/>
+          <path d="M400 60 q10 -18 22 0 q-10 18 -22 0Z"/>
+        </g>
+
+        <!-- children sitting on branches -->
+        <!-- child 1 -->
+        <g transform="translate(195,215)">
+          <ellipse cx="0" cy="18" rx="16" ry="10" fill="#ff6f61"/>
+          <circle cx="0" cy="0" r="13" fill="#f7c99a"/>
+          <path d="M-13 -3 a13 10 0 0 1 26 0 Z" fill="#5b3a29"/>
+          <line x1="-16" y1="18" x2="-26" y2="30" stroke="#f7c99a" stroke-width="5" stroke-linecap="round"/>
+          <line x1="16" y1="18" x2="26" y2="30" stroke="#f7c99a" stroke-width="5" stroke-linecap="round"/>
+          <line x1="-8" y1="26" x2="-14" y2="42" stroke="#3aa0e0" stroke-width="6" stroke-linecap="round"/>
+          <line x1="8" y1="26" x2="14" y2="42" stroke="#3aa0e0" stroke-width="6" stroke-linecap="round"/>
+        </g>
+        <!-- child 2 -->
+        <g transform="translate(610,205)">
+          <ellipse cx="0" cy="18" rx="16" ry="10" fill="#3aa0e0"/>
+          <circle cx="0" cy="0" r="13" fill="#e8b48a"/>
+          <path d="M-13 -4 a13 10 0 0 1 26 0 Z" fill="#2b2119"/>
+          <line x1="-16" y1="18" x2="-26" y2="30" stroke="#e8b48a" stroke-width="5" stroke-linecap="round"/>
+          <line x1="16" y1="18" x2="26" y2="30" stroke="#e8b48a" stroke-width="5" stroke-linecap="round"/>
+          <line x1="-8" y1="26" x2="-14" y2="42" stroke="#9b6bcc" stroke-width="6" stroke-linecap="round"/>
+          <line x1="8" y1="26" x2="14" y2="42" stroke="#9b6bcc" stroke-width="6" stroke-linecap="round"/>
+        </g>
+        <!-- child 3 -->
+        <g transform="translate(400,345)">
+          <ellipse cx="0" cy="18" rx="17" ry="11" fill="#ffd166"/>
+          <circle cx="0" cy="0" r="14" fill="#f7c99a"/>
+          <path d="M-14 -6 q14 -14 28 0 q-4 6 -28 0Z" fill="#8a5a34"/>
+          <line x1="-17" y1="18" x2="-28" y2="32" stroke="#f7c99a" stroke-width="5" stroke-linecap="round"/>
+          <line x1="17" y1="18" x2="28" y2="32" stroke="#f7c99a" stroke-width="5" stroke-linecap="round"/>
+          <line x1="-9" y1="28" x2="-15" y2="46" stroke="#4caf6e" stroke-width="6" stroke-linecap="round"/>
+          <line x1="9" y1="28" x2="15" y2="46" stroke="#4caf6e" stroke-width="6" stroke-linecap="round"/>
+        </g>
+        <!-- child 4 -->
+        <g transform="translate(255,325)">
+          <ellipse cx="0" cy="16" rx="15" ry="9" fill="#9b6bcc"/>
+          <circle cx="0" cy="0" r="12" fill="#e8b48a"/>
+          <path d="M-12 -6 q12 -12 24 0 q-2 6 -24 0Z" fill="#2b2119"/>
+          <line x1="-15" y1="16" x2="-24" y2="27" stroke="#e8b48a" stroke-width="4" stroke-linecap="round"/>
+          <line x1="15" y1="16" x2="24" y2="27" stroke="#e8b48a" stroke-width="4" stroke-linecap="round"/>
+          <line x1="-7" y1="24" x2="-12" y2="38" stroke="#ff6f61" stroke-width="5" stroke-linecap="round"/>
+          <line x1="7" y1="24" x2="12" y2="38" stroke="#ff6f61" stroke-width="5" stroke-linecap="round"/>
+        </g>
+        <!-- child 5 -->
+        <g transform="translate(545,330)">
+          <ellipse cx="0" cy="16" rx="15" ry="9" fill="#4caf6e"/>
+          <circle cx="0" cy="0" r="12" fill="#f7c99a"/>
+          <path d="M-12 -4 a12 9 0 0 1 24 0 Z" fill="#5b3a29"/>
+          <line x1="-15" y1="16" x2="-24" y2="27" stroke="#f7c99a" stroke-width="4" stroke-linecap="round"/>
+          <line x1="15" y1="16" x2="24" y2="27" stroke="#f7c99a" stroke-width="4" stroke-linecap="round"/>
+          <line x1="-7" y1="24" x2="-12" y2="38" stroke="#ffd166" stroke-width="5" stroke-linecap="round"/>
+          <line x1="7" y1="24" x2="12" y2="38" stroke="#ffd166" stroke-width="5" stroke-linecap="round"/>
+        </g>
+
+        <!-- birds -->
+        <g stroke="#5b3a29" stroke-width="3" fill="none" stroke-linecap="round">
+          <path d="M80 130 q8 -10 16 0 q8 -10 16 0"/>
+          <path d="M690 220 q7 -9 14 0 q7 -9 14 0"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-wrap">
+    <div class="facts">
+      <h2>Did You Know?</h2>
+      <div class="facts-grid">
+        <div class="fact-card">
+          <span class="big">90%</span>
+          Of brain development happens before the age of five
+        </div>
+        <div class="fact-card">
+          <span class="big">5 Yrs</span>
+          The first five years shape the brain more than any other time
+        </div>
+        <div class="fact-card">
+          <span class="big">#1</span>
+          Choice: the right preschool builds the foundation for life
+        </div>
+      </div>
+      <p class="lead">These early years build the foundation for a child's future learning, confidence, creativity and emotional well-being. That's why choosing the right preschool matters.</p>
+    </div>
+
+    <div class="philosophy" style="margin-top:60px;">
+      <div class="text">
+        <h2 class="section-title" style="text-align:left;">Our Approach</h2>
+        <p style="margin-bottom:16px;">At Nature &amp; Nurture Preschool, every day is thoughtfully designed for young minds. We don't just teach children what to think — we teach them <strong>how to think.</strong></p>
+        <p>Through guided exploration, creativity, play, and care, we help children grow into confident and happy learners, ready to embrace the world around them.</p>
+      </div>
+      <div class="cards">
+        <div class="mini-card"><div class="emoji">🌱</div><h4>Guided Exploration</h4><p>Curiosity-led learning at every step</p></div>
+        <div class="mini-card"><div class="emoji">🎨</div><h4>Creativity</h4><p>Room to imagine, make and express</p></div>
+        <div class="mini-card"><div class="emoji">🧩</div><h4>Play</h4><p>Learning through joyful play</p></div>
+        <div class="mini-card"><div class="emoji">💛</div><h4>Care</h4><p>A warm, nurturing environment</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="admissions">
+  <div class="admission">
+    <h2>🎉 Free Admission for the First 10 Students!</h2>
+    <p>Give your child the best start in life. Limited seats available — enroll today and be one of our first 10 lucky students to join Nature &amp; Nurture Preschool for free.</p>
+    <a href="#contact" class="btn">Claim Your Spot</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-wrap">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-sub">We'd love to welcome your little one into our family. Reach out to us today.</p>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <div class="item">
+          <div class="icon">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p>Near St. Cyril's College, Kilivayal, Adoor</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p>+916238733158</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">🕒</div>
+          <div>
+            <h4>Admissions Open</h4>
+            <p>Free admission for the first 10 students — limited seats!</p>
+          </div>
+        </div>
+      </div>
+      <div class="map-box">
+        📍 Nature &amp; Nurture Preschool<br/>Near St. Cyril's College, Kilivayal, Adoor
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Nature &amp; Nurture Preschool</strong> — Where Little Minds Grow, Play &amp; Blossom</p>
+  <p>Near St. Cyril's College, Kilivayal, Adoor &nbsp;|&nbsp; Phone: 123</p>
+</footer>
+
+</body>
+</html>
